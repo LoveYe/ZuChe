@@ -1,0 +1,48 @@
+//
+//  AllPages.pch
+
+//
+//  Created by 佐途 on 15/7/8.
+//  Copyright (c) 2015年 佐途. All rights reserved.
+//
+//MJ用的
+static const CGFloat MJDuration = 2.0;
+#define INTTOSTR(intNum)         [@(intNum) stringValue]
+#define NAV_TOP self.navigationController.navigationBar.frame.size.height-20
+#define cellWidth cell.frame.size.width
+#define Font(F) [UIFont fontWithName:@"STHeitiSC-Light" size:(F)/320.0*ScreenWidth]
+
+#define Height(H) (H)/320.0*ScreenWidth
+#define VERSION  [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleShortVersionString"]
+
+#define UIColorRGBA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+#define kWindowWidth                        ([[UIScreen mainScreen] bounds].size.width)
+#define kWindowHeight                       ([[UIScreen mainScreen] bounds].size.height)
+#ifndef _____AllPages_pch
+#define _____AllPages_pch
+#define UIColorFromRGB(rgbValue)                             [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#import "RankViewController.h"
+//#import "UMSocialSinaHandler.h"
+#import "GiFHUD.h"
+#import "AppDelegate.h"
+#import "AFNetworking.h"
+#import "Header.h"
+#import "MyUtil.h"
+#import "XWAlterview.h"
+#import "ZCUserData.h"
+#import "MJRefresh.h"
+#import "MJChiBaoZiHeader.h"
+#import "MBProgressHUD.h"
+#import "LGReachability.h"
+#import "LoginView.h"
+#import "HttpManager.h"
+#import "UIImage+GIF.h"
+#import "IQKeyboardManager.h"
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>//引入定位功能所有的头文件
+#import <BaiduMapAPI_Utils/BMKUtilsComponent.h>//引入计算工具所有的头文件
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
+#import <BaiduMapAPI_Map/BMKMapComponent.h>//引入地图功能所有的头文件
+
+#endif
+
