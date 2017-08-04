@@ -537,7 +537,7 @@
         
         view.carid = self.carid;
         
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -557,7 +557,7 @@
         
         view.carid = self.carid;
         
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -575,7 +575,7 @@
         
         view.carid = self.carid;
         
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -585,9 +585,6 @@
         [self.view.window.layer addAnimation:animation forKey:nil];
         
         [self.navigationController pushViewController:view animated:NO];
-    }else{
-        
-        
     }
 }
 - (void)sendMessage:(NSString *)str sendNUm:(NSInteger)num{
@@ -690,7 +687,6 @@
         [self AlertView];
     }
 }
-
 #pragma mark - alertView
 - (void)AlertView{
     

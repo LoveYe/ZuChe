@@ -1159,9 +1159,9 @@
     
     dateView.blcok = ^(NSDate *dateString){
         
-        NSLog(@"年 = %ld  月 = %.2ld  日 = %.2ld  时 = %.2ld  分 = %.2ld",(long)dateString.year,(long)dateString.month,(long)dateString.day,dateString.hour,dateString.minute);
+//        NSLog(@"年 = %ld  月 = %.2ld  日 = %.2ld  时 = %.2ld  分 = %.2ld",(long)dateString.year,(long)dateString.month,(long)dateString.day,dateString.hour,dateString.minute);
         
-        NSString *datestr = [NSString stringWithFormat:@"%ld-%ld-%ld %ld:%ld",(long)dateString.year,(long)dateString.month,(long)dateString.day,dateString.hour,dateString.minute];
+        NSString *datestr = [NSString stringWithFormat:@"%d-%d-%d %d:%d",(int)dateString.year,(int)dateString.month,(int)dateString.day,(int)dateString.hour,(int)dateString.minute];
         [xuanze setTitle:datestr forState:UIControlStateNormal];
         UIColor *color = Color(77, 77, 77);
         [xuanze setTitleColor:color forState:UIControlStateNormal];
@@ -1248,7 +1248,7 @@
                 yu.text = [NSString stringWithFormat:@"¥%d",(price+(cCount+cCount2)*aCount+(dCount2+dCount)*[tou2.text intValue]+price2*aCount+price3*bCount)-((price+(cCount+cCount2)*aCount+(dCount2+dCount)*[tou2.text intValue]+price2*aCount+price3*bCount)/100/3)*100];
                 
                 jianqu.text = @"";
-                youhuiLabel.text = [NSString stringWithFormat:@"%ld张",_youhuiArray.count];
+                youhuiLabel.text = [NSString stringWithFormat:@"%d张",(int)_youhuiArray.count];
                 yesOrNO = 0;
             }else{
                 
@@ -1257,7 +1257,7 @@
                 yu.text = [NSString stringWithFormat:@"¥%d",(price+(cCount+cCount2)*aCount+(dCount2+dCount)*[tou2.text intValue]+price2*aCount+price3*bCount)-((price+(cCount+cCount2)*aCount+(dCount2+dCount)*[tou2.text intValue]+price2*aCount+price3*bCount)/100/3)*100];
                 
                 jianqu.text = @"";
-                youhuiLabel.text = [NSString stringWithFormat:@"%ld张",_youhuiArray.count];
+                youhuiLabel.text = [NSString stringWithFormat:@"%d张",(int)_youhuiArray.count];
             }
             
         }
@@ -1274,7 +1274,7 @@
             price = [self.zhucarPrice intValue];
             
             jianqu.text = @"";
-            youhuiLabel.text = [NSString stringWithFormat:@"%ld张",_youhuiArray.count];
+            youhuiLabel.text = [NSString stringWithFormat:@"%d张",(int)_youhuiArray.count];
             
             zong.text = [NSString stringWithFormat:@"¥%d",price+cCount+cCount2+price2*aCount+price3*bCount];
             ding.text = [NSString stringWithFormat:@"¥%d",((price+cCount+cCount2+price2*aCount+price3*bCount)/100/3)*100];
@@ -1305,7 +1305,7 @@
                 [self addYOUhuiAlert];
                 
                 jianqu.text = @"";
-                youhuiLabel.text = [NSString stringWithFormat:@"%ld张",_youhuiArray.count];
+                youhuiLabel.text = [NSString stringWithFormat:@"%d张",(int)_youhuiArray.count];
                 yesOrNO = 0;
                 price = [self.genCarprice intValue]*bCount;
                 
@@ -1315,7 +1315,7 @@
             }else{
                 
                 jianqu.text = @"";
-                youhuiLabel.text = [NSString stringWithFormat:@"%ld张",_youhuiArray.count];
+                youhuiLabel.text = [NSString stringWithFormat:@"%d张",(int)_youhuiArray.count];
                 
                 zong.text = [NSString stringWithFormat:@"¥%d",price+(cCount+cCount2)*aCount+(dCount2+dCount)*[tou2.text intValue]+price2*aCount+price3*bCount];
                 ding.text = [NSString stringWithFormat:@"¥%d",((price+(cCount+cCount2)*aCount+(dCount2+dCount)*[tou2.text intValue]+price2*aCount+price3*bCount)/100/3)*100];
@@ -1409,7 +1409,7 @@
         }else{
             
             jianqu.text = @"";
-            youhuiLabel.text = [NSString stringWithFormat:@"%ld张",_youhuiArray.count];
+            youhuiLabel.text = [NSString stringWithFormat:@"%d张",(int)_youhuiArray.count];
             if (yesOrNO == 1) {
                 
                  [self addYOUhuiAlert];
@@ -1439,7 +1439,7 @@
             price = [self.genCarprice intValue];
             
             jianqu.text = @"";
-            youhuiLabel.text = [NSString stringWithFormat:@"%ld张",_youhuiArray.count];
+            youhuiLabel.text = [NSString stringWithFormat:@"%d张",(int)_youhuiArray.count];
             
             zong.text = [NSString stringWithFormat:@"¥%d",price+(cCount+cCount2)*aCount+(dCount2+dCount)*bCount+price2*aCount+price3*bCount];
             ding.text = [NSString stringWithFormat:@"¥%d",(price+(cCount+cCount2)*aCount+(dCount2+dCount)*bCount+price2*aCount+price3*bCount)/100/3*100];
@@ -1465,7 +1465,7 @@
         }else{
             
             jianqu.text = @"";
-            youhuiLabel.text = [NSString stringWithFormat:@"%ld张",_youhuiArray.count];
+            youhuiLabel.text = [NSString stringWithFormat:@"%d张",(int)_youhuiArray.count];
             
             if (yesOrNO == 1) {
                 
@@ -2263,9 +2263,9 @@
     footView.backgroundColor = [UIColor whiteColor];
     
     
-    UIImageView *youhuiPrice = [[UIImageView alloc] initWithFrame:CGRectMake(footView.frame.size.width/2-footView.frame.size.width*0.125, CGRectGetMaxY(footView.frame)+footView.frame.size.width*0.1, footView.frame.size.width*0.15, footView.frame.size.width*0.15)];
-    youhuiPrice.image = [UIImage imageNamed:@"logo浅.png"];
-    [footView addSubview:youhuiPrice];
+    UIImageView *youhuiPrice11 = [[UIImageView alloc] initWithFrame:CGRectMake(footView.frame.size.width/2-footView.frame.size.width*0.125, CGRectGetMaxY(footView.frame)+footView.frame.size.width*0.1, footView.frame.size.width*0.15, footView.frame.size.width*0.15)];
+    youhuiPrice11.image = [UIImage imageNamed:@"logo浅.png"];
+    [footView addSubview:youhuiPrice11];
     
     return footView;
 }

@@ -872,20 +872,18 @@
 }
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     
-//    NSLog(@"%ld",index);
-    
     NSString *str = [dict3 objectAtIndex:index][@"carid"];
-    NSString *cartu = [dict3 objectAtIndex:index][@"cartu"];
+    NSString *cartu111 = [dict3 objectAtIndex:index][@"cartu"];
     
     if (_dicDelegate && [_dicDelegate respondsToSelector:@selector(sendCarId:sendPSG:)]) {
         
-        [_dicDelegate sendCarId:str sendPSG:cartu];
+        [_dicDelegate sendCarId:str sendPSG:cartu111];
     }
 }
 
 
--(NSString *)sha1WithKey:(NSString *)key
-{
+-(NSString *)sha1WithKey:(NSString *)key{
+    
     const char *cstr = [key cStringUsingEncoding:NSUTF8StringEncoding];
     NSData *data = [NSData dataWithBytes:cstr length:key.length];
     

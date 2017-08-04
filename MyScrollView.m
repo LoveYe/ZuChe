@@ -304,14 +304,14 @@
     if (_delegate &&[_delegate respondsToSelector:@selector(sendstr:)]) {
         
         MarriedCar *view = [[MarriedCar alloc] init];
-        NSString *str = [NSString stringWithFormat:@"%ld",tap-1000];
-        view.cartype = [NSString stringWithFormat:@"%ld",tap-1000];
+        NSString *str = [NSString stringWithFormat:@"%d",(int)(tap-1000)];
+        view.cartype = [NSString stringWithFormat:@"%d",(int)(tap-1000)];
         [_delegate sendstr:str];
     }
 }
 - (void)carDetailInfo:(UIButton *)sender{
     
-    NSLog(@"%ld",sender.tag);
+//    NSLog(@"%d",(int)sender.tag);
     long carid = sender.tag - 1000;
     if (_pjDelegate && [_pjDelegate respondsToSelector:@selector(openPingjia:carid:)]) {
         

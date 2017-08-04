@@ -226,7 +226,6 @@ static char UIScrollViewGifPullToRefresh;
 //    [self.navigationController.navigationBar setTitleTextAttributes:dic];
     
     
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 25, 25);
     [button setBackgroundImage:[UIImage imageNamed:@"返回11"] forState:UIControlStateNormal];
@@ -665,7 +664,6 @@ static char UIScrollViewGifPullToRefresh;
         view.carid = self.catid;
         
         view.hidesBottomBarWhenPushed = YES;
-        view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -681,7 +679,6 @@ static char UIScrollViewGifPullToRefresh;
         view.carid = self.catid;
         
         view.hidesBottomBarWhenPushed = YES;
-        view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -695,9 +692,7 @@ static char UIScrollViewGifPullToRefresh;
         NewMapController2 *view = [[NewMapController2 alloc]init];
         
         view.carid = self.catid;
-        view.hidesBottomBarWhenPushed = YES;
         
-        view.hidesBottomBarWhenPushed = YES;
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -714,7 +709,6 @@ static char UIScrollViewGifPullToRefresh;
         view.carid = self.catid;
         
         view.hidesBottomBarWhenPushed = YES;
-        view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -727,7 +721,7 @@ static char UIScrollViewGifPullToRefresh;
         
         UseWayViewController *view = [[UseWayViewController alloc] init];
         view.carid = self.catid;
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;

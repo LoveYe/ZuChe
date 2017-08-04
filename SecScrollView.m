@@ -259,7 +259,7 @@
 
 - (void)handleTapGR:(UIButton *)tap {
     
-    NSLog(@"****%ld",tap.tag);
+//    NSLog(@"****%ld",tap.tag);
     
     long i = tap.tag - 1000;
     

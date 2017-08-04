@@ -415,7 +415,7 @@
         MyCollectionViewController *view = [[MyCollectionViewController alloc] init];
         view.title = @"我的收藏";
         
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -429,7 +429,7 @@
         
         YHQView *view = [[YHQView alloc] init];
         
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -448,7 +448,7 @@
         
         FileAComplaintViewController *view = [[FileAComplaintViewController alloc] init];
         
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -465,7 +465,7 @@
         XieYiViewController *view = [[XieYiViewController alloc] init];
         view.xieyititle = @"平台规则";
         
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -480,7 +480,7 @@
         
         AboutUsViewController *view = [[AboutUsViewController alloc] init];
         
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -498,7 +498,7 @@
     if ([ZCUserData share].isLogin == NO) {
         
         LoginView *view = [[LoginView alloc] init];
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;

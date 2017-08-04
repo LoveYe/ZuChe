@@ -129,7 +129,6 @@
     image.image = [UIImage imageNamed:@"241"];
     self.navigationItem.titleView = image;
     
-    
     _imageNameArray = @[@"MPV",@"行政",@"奢华",@"激情",@"尊贵"];
     _typeArray =  @[@"MPV",@"行政级",@"奢华",@"激情",@"尊贵"];
     self.imageWidth = [UIScreen mainScreen].bounds.size.width;
@@ -137,20 +136,6 @@
     self.typeWidth = self.imageWidth/5.00;
     self.view.backgroundColor = [UIColor whiteColor];
     self.imageViewArray = [NSMutableArray array];
-    CGFloat margin = (self.imageWidth - 20*5)/6.0;
-    for (NSInteger i=0; i<self.imageNameArray.count; i++) {
-        
-        CGRect rect = CGRectMake((margin+30)*i+ScreenWidth*0.06, 13, 20, 20);
-        MyAnnomationView *view = [[MyAnnomationView alloc] initWithFrame:rect typeString:self.imageNameArray[i]];
-        [self.imageViewArray addObject:view];
-        if (i==2) {
-            
-            self.lastImageView = view;
-            self.lastPageIndex = 2;
-        }
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(transForm:)];
-        [view addGestureRecognizer:tap];
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -163,6 +148,8 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条"] forBarMetrics:UIBarMetricsDefault];
     
     self.navigationController.navigationBar.translucent = YES;
+    
+    self.tabBarController.tabBar.hidden = NO;
 }
 - (UIImage *)scaleToSize:(UIImage *)Img size:(CGSize)size{
     
@@ -221,23 +208,29 @@
     static NSString *identifier = @"identifier";
     UITableViewCell *tabcell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!tabcell) {
+        
         tabcell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     if (indexPath.row == 0) {
+        
         UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"婚车.png"]];
         tabcell.backgroundView = image;
     }
     if (indexPath.row == 1) {
+        
         tabcell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"商务.png"]];
     }
     
     if (indexPath.row == 2) {
+        
         tabcell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"接机.png"]];
     }
     if (indexPath.row == 3) {
+        
         tabcell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"超跑.png"]];
     }
     if (indexPath.row == 4) {
+        
         tabcell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"拍摄.png"]];
     }
     if (indexPath.row == 5) {
@@ -262,7 +255,6 @@
         
         MarriedCar *view = [MarriedCar new];
         
-        view.hidesBottomBarWhenPushed = YES;view.hidesBottomBarWhenPushed = YES;
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -323,7 +315,17 @@
     }else if (indexPath.row == 1){
         
         ShangwuController *view = [[ShangwuController alloc] init];
-        [self.navigationController pushViewController:view animated:YES];
+        
+        view.hidesBottomBarWhenPushed = YES;
+        view.hidesBottomBarWhenPushed = YES;
+        CATransition *animation = [CATransition animation];
+        animation.duration = 0.3;
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.type = @"Fade";
+        animation.subtype = kCATransitionFromLeft;
+        [self.view.window.layer addAnimation:animation forKey:nil];
+        
+        [self.navigationController pushViewController:view animated:NO];
     }
     else if (indexPath.row == 2){
         
@@ -604,7 +606,15 @@
         view.address = plateAddress;
         view.jiesong = getOrsend;
         
-        [self.navigationController pushViewController:view animated:YES];
+        view.hidesBottomBarWhenPushed = YES;
+        CATransition *animation = [CATransition animation];
+        animation.duration = 0.3;
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.type = @"Fade";
+        animation.subtype = kCATransitionFromLeft;
+        [self.view.window.layer addAnimation:animation forKey:nil];
+        
+        [self.navigationController pushViewController:view animated:NO];
         
         UIView *view1 = (UIView *)[self.view.window viewWithTag:10089];
         [view1 removeFromSuperview];
@@ -627,7 +637,15 @@
         view.address = plateAddress;
         view.jiesong = getOrsend;
         
-        [self.navigationController pushViewController:view animated:YES];
+        view.hidesBottomBarWhenPushed = YES;
+        CATransition *animation = [CATransition animation];
+        animation.duration = 0.3;
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.type = @"Fade";
+        animation.subtype = kCATransitionFromLeft;
+        [self.view.window.layer addAnimation:animation forKey:nil];
+        
+        [self.navigationController pushViewController:view animated:NO];
         
         UIView *view1 = (UIView *)[self.view.window viewWithTag:10089];
         [view1 removeFromSuperview];
@@ -666,7 +684,15 @@
         view.address = plateAddress;
         view.jiesong = getOrsend;
         
-        [self.navigationController pushViewController:view animated:YES];
+        view.hidesBottomBarWhenPushed = YES;
+        CATransition *animation = [CATransition animation];
+        animation.duration = 0.3;
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.type = @"Fade";
+        animation.subtype = kCATransitionFromLeft;
+        [self.view.window.layer addAnimation:animation forKey:nil];
+        
+        [self.navigationController pushViewController:view animated:NO];
         
         UIView *view1 = (UIView *)[self.view.window viewWithTag:10089];
         [view1 removeFromSuperview];
@@ -729,15 +755,23 @@
     }
     else{
         
+        UIView *view1 = (UIView *)[self.view.window viewWithTag:10089];
+        [view1 removeFromSuperview];
+        
         JieSongViewController *view = [[JieSongViewController alloc] init];
         
         view.address = plateAddress;
         view.jiesong = getOrsend;
         
-        [self.navigationController pushViewController:view animated:YES];
+        view.hidesBottomBarWhenPushed = YES;
+        CATransition *animation = [CATransition animation];
+        animation.duration = 0.3;
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.type = @"Fade";
+        animation.subtype = kCATransitionFromLeft;
+        [self.view.window.layer addAnimation:animation forKey:nil];
         
-        UIView *view1 = (UIView *)[self.view.window viewWithTag:10089];
-        [view1 removeFromSuperview];
+        [self.navigationController pushViewController:view animated:NO];
     }
 }
 
@@ -802,13 +836,18 @@
     
     UIView *view1 = (UIView *)[self.view.window viewWithTag:10089];
     [view1 removeFromSuperview];
-//    UIColor *color = Color(234, 68, 115);
-//    
-//    sender.layer.borderColor = [color CGColor];
-//    [sender setTitleColor:color forState:UIControlStateNormal];
     
     ChaoPaoViewController *view = [[ChaoPaoViewController alloc] init];
     view.fangshi = sender.titleLabel.text;
+    
+    view.hidesBottomBarWhenPushed = YES;
+//    CATransition *animation = [CATransition animation];
+//    animation.duration = 0.3;
+//    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    animation.type = @"Fade";
+//    animation.subtype = kCATransitionFromLeft;
+//    [self.view.window.layer addAnimation:animation forKey:nil];
+    
     [self.navigationController pushViewController:view animated:YES];
 }
 

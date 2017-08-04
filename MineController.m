@@ -183,19 +183,16 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 7;
+    return 6;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //    CGFloat width = self.view.frame.size.width;
     if (indexPath.row == 0) {
         
         return width*0.58;
-    }if (indexPath.row == 5) {
+    }else
         
         return width*0.18;
-    }
-    return width*0.18;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -257,21 +254,21 @@
         [tableViewCell addSubview:_djButton];
     }
     
+//    if (indexPath.row == 2) {
+//        UIView *view = [[UIView alloc] init];
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width*0.05, width*0.05, width*0.4, width*0.08)];
+//        label.text = @"我的收藏";
+//        label.textColor = [UIColor grayColor];
+//        [view addSubview:label];
+//        
+//        //        CGFloat width = self.view.frame.size.width;
+//        UIImageView *addImage = [[UIImageView alloc] initWithFrame:CGRectMake(width*0.83, width*0.055, width*0.06, width*0.06)];
+//        addImage.image = [UIImage imageNamed:@"1(12).png"];
+//        [view addSubview:addImage];
+//        
+//        tableViewCell.backgroundView = view;
+//    }
     if (indexPath.row == 2) {
-        UIView *view = [[UIView alloc] init];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width*0.05, width*0.05, width*0.4, width*0.08)];
-        label.text = @"我的收藏";
-        label.textColor = [UIColor grayColor];
-        [view addSubview:label];
-        
-        //        CGFloat width = self.view.frame.size.width;
-        UIImageView *addImage = [[UIImageView alloc] initWithFrame:CGRectMake(width*0.83, width*0.055, width*0.06, width*0.06)];
-        addImage.image = [UIImage imageNamed:@"1(12).png"];
-        [view addSubview:addImage];
-        
-        tableViewCell.backgroundView = view;
-    }
-    if (indexPath.row == 3) {
         
         UIView *view = [[UIView alloc] init];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width*0.05, width*0.05, width*0.4, width*0.08)];
@@ -285,7 +282,7 @@
         
         tableViewCell.backgroundView = view;
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         UIView *view = [[UIView alloc] init];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width*0.05, width*0.05, width*0.4, width*0.08)];
         label.text = @"向我们反馈";
@@ -314,7 +311,7 @@
 //        
 //        tableViewCell.backgroundView = view;
 //    }
-    if (indexPath.row == 5) {
+    if (indexPath.row == 4) {
         
         UIView *view = [[UIView alloc] init];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width*0.05, width*0.05, width*0.4, width*0.08)];
@@ -329,7 +326,7 @@
         
         tableViewCell.backgroundView = view;
     }
-    if (indexPath.row == 6) {
+    if (indexPath.row == 5) {
         
         UIView *view = [[UIView alloc] init];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(width*0.05, width*0.05, width*0.4, width*0.08)];
@@ -405,32 +402,29 @@
     if (indexPath.row == 0) {
         
     }
+//    if (indexPath.row == 2) {
+//        
+//        MyCollectionViewController *view = [[MyCollectionViewController alloc] init];
+//        view.title = @"我的收藏";
+//        
+//        view.hidesBottomBarWhenPushed = YES;
+//        CATransition *animation = [CATransition animation];
+//        animation.duration = 0.3;
+//        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//        animation.type = @"Fade";
+//        animation.subtype = kCATransitionFromLeft;
+//        [self.view.window.layer addAnimation:animation forKey:nil];
+//        
+//        [self.navigationController pushViewController:view animated:NO];
+//    }
     if (indexPath.row == 2) {
-        
-        MyCollectionViewController *view = [[MyCollectionViewController alloc] init];
-        view.title = @"我的收藏";
-        
-        view.hidesBottomBarWhenPushed = YES;
-        view.hidesBottomBarWhenPushed = YES;
-        CATransition *animation = [CATransition animation];
-        animation.duration = 0.3;
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        animation.type = @"Fade";
-        animation.subtype = kCATransitionFromLeft;
-        [self.view.window.layer addAnimation:animation forKey:nil];
-        
-        [self.navigationController pushViewController:view animated:NO];
-    }
-    if (indexPath.row == 3) {
         
         [self PayOver];
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         
         FanKuiViewController *view = [[FanKuiViewController alloc] init];
-        view.hidesBottomBarWhenPushed = YES;
         
-        view.hidesBottomBarWhenPushed = YES;
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -441,17 +435,10 @@
         
         [self.navigationController pushViewController:view animated:NO];
     }
-//    if (indexPath.row == 4) {
-//        
-//        YaoqinViewController *view = [[YaoqinViewController alloc] init];
-//        [self.navigationController pushViewController:view animated:NO];
-//    }
-    if (indexPath.row == 5) {
+    if (indexPath.row == 4) {
         
         GuizeView *view = [[GuizeView alloc] init];
-//        view.xieyititle = @"平台规则";
         
-        view.hidesBottomBarWhenPushed = YES;
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -461,11 +448,10 @@
         [self.view.window.layer addAnimation:animation forKey:nil];
         [self.navigationController pushViewController:view animated:YES];
     }
-    if (indexPath.row == 6) {
+    if (indexPath.row == 5) {
         
         AboutUsView *view = [[AboutUsView alloc] init];
         
-        view.hidesBottomBarWhenPushed = YES;
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -480,13 +466,13 @@
         RcviewViewController *view = [[RcviewViewController alloc] init];
         
         view.hidesBottomBarWhenPushed = YES;
-        view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         animation.type = @"Fade";
         animation.subtype = kCATransitionFromLeft;
         [self.view.window.layer addAnimation:animation forKey:nil];
+        
         [self.navigationController pushViewController:view animated:YES];
     }
 }

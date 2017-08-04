@@ -244,8 +244,6 @@ static char UIScrollViewGifPullToRefresh;
     
     [btn12 removeFromSuperview];
     
-//    NoCarPageConttroller *nooder = [[NoCarPageConttroller alloc] init];
-    
     NSDictionary *parameters=[NSDictionary dictionaryWithObjectsAndKeys:
                               [ZCUserData share].userId,@"userid",nil];
     
@@ -257,16 +255,10 @@ static char UIScrollViewGifPullToRefresh;
             
             [_scrollView removeFromSuperview];
             [self createView];
-//            NoCarPageConttroller *nooder = [[NoCarPageConttroller alloc] init];
-//            [self.navigationController pushViewController:nooder animated:YES];
         }else{
             
             countArray = [NSMutableArray arrayWithArray:fanhuicanshu[@"carlist"]];
-//            NSLog(@"---%@",countArray);
-//            NSLog(@"fanhuicanshu---%@",fanhuicanshu);
-            
             Dicttt = fanhuicanshu[@"userinfo"];
-            
             
             btn12=[UIButton buttonWithType:UIButtonTypeCustom];
             btn12.frame=CGRectMake(0, (countArray.count)*(ScreenWidth*0.2125), ScreenWidth, width*0.2125);
@@ -274,17 +266,14 @@ static char UIScrollViewGifPullToRefresh;
             [btn12 setTitle:@"添加新车源" forState:UIControlStateNormal];
             btn12.titleLabel.font = Font(13);
             [btn12 setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-//            [btn12 setImage:[UIImage imageNamed:@"++.png"] forState:UIControlStateNormal];
             
             UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(width/2+width*0.06, width*0.06, width*0.09, width*0.09)];
             imageview.image = [UIImage imageNamed:@"++.png"];
             [btn12 addSubview:imageview];
             
-//            [btn12 setImageEdgeInsets:UIEdgeInsetsMake(0,ScreenWidth*0.2, 0, -ScreenWidth*0.20)];
             [btn12 setTitleEdgeInsets:UIEdgeInsetsMake(0, -ScreenWidth*0.05, 0, ScreenWidth*0.05)];
             [btn12 addTarget:self action:@selector(btnchick:) forControlEvents:UIControlEventTouchUpInside];
             [vii removeFromSuperview];
-//            [nooder.view removeFromSuperview];
             
             [_tableView reloadData];
             // 新建tableView
@@ -319,18 +308,6 @@ static char UIScrollViewGifPullToRefresh;
     label.font = [UIFont fontWithName:@"Arial-BoldMT" size:17];
     self.navigationItem.titleView = label;
     
-//    [self.navigationController.navigationBar setTitleTextAttributes:
-//     
-//  @{NSFontAttributeName:[UIFont systemFontOfSize:15],
-//    
-//    NSForegroundColorAttributeName:[UIColor greenColor]}];
-//    [self.navigationController.navigationBar setTintColor:[UIColor redColor]];
-    
-//    UIColor *col = Color(100, 100, 100);
-//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:col,NSForegroundColorAttributeName, nil];
-//    [self.navigationController.navigationBar setTitleTextAttributes:dic];
-    
-//    [self createView];
     self.view.backgroundColor = Color(240, 240, 240);
 }
 
@@ -342,9 +319,7 @@ static char UIScrollViewGifPullToRefresh;
     _tableView.scrollEnabled = YES;
     [self.view addSubview:_tableView];
     
-    
     _tableView.backgroundColor = Color(240, 240, 240);
-//    _tableView.backgroundColor = [UIColor redColor];
     
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -356,11 +331,6 @@ static char UIScrollViewGifPullToRefresh;
     [_tableView addSubview:refreshControl];
     [refreshControl beginRefreshing];
     [self refreshClick:refreshControl];
-//    [_tableView.tableHeaderView ];
-//    [self Refresh_JXY:_tableView VOID:^{
-//        
-//        [self downLoad];
-//    }];
 }
 - (void)refreshClick:(UIRefreshControl *)refreshControl {
     NSLog(@"refreshClick: -- 刷新触发");
@@ -455,7 +425,7 @@ static char UIScrollViewGifPullToRefresh;
         
         AddYourCars *view = [[AddYourCars alloc] init];
         view.catid = dic[@"carid"];
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;
@@ -463,12 +433,13 @@ static char UIScrollViewGifPullToRefresh;
         animation.type = @"Fade";
         animation.subtype = kCATransitionFromLeft;
         [self.view.window.layer addAnimation:animation forKey:nil];
+        
         [self.navigationController pushViewController:view animated:NO];
     }if ([dic[@"status"] intValue] == 3) {
         
         CarShenheView *view = [[CarShenheView alloc] init];
         view.carid = dic[@"carid"];
-        view.hidesBottomBarWhenPushed = YES;
+        
         view.hidesBottomBarWhenPushed = YES;
         CATransition *animation = [CATransition animation];
         animation.duration = 0.3;

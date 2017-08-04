@@ -24,6 +24,8 @@
 #import "YSLTransitionAnimator.h"
 #import "ShaiXuanView.h"
 
+#import "LoginView.h"
+
 #define  PATH_URL @"http://wx.leisurecarlease.com/api.php?op=api_zclxlb"
 
 @interface CarInfoView()<UITableViewDataSource,UITableViewDelegate,YSLTransitionAnimatorDataSource,ShaiXuanDelegate,PaiSheDelegate>{
@@ -62,55 +64,63 @@
 
 - (void)downloadData{
     
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.cartype,@"type",[ZCUserData share].userId,@"userid",state,@"state",bukezutime,@"bukezutime",jiedan,@"jiedan", nil];
-//  @{@"type":self.cartype,@"state":@"1",@"bukezutime":@"2017-7-15",@"jiedan":@"1"};
-    
-    _dataArray = [NSMutableArray array];
-    dictnory = [NSDictionary dictionary];
-    
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:PATH_URL]]) {
+    if ([[ZCUserData share].userId isEqualToString:@""] || [ZCUserData share].userId.length == 0) {
         
-        [HttpManager postData:dict andUrl:PATH_URL success:^(NSDictionary *fanhuicanshu) {
+        LoginView *view = [[LoginView alloc] init];
+        [self.navigationController pushViewController:view animated:YES];
+    }else{
+        
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.cartype,@"type",[ZCUserData share].userId,@"userid",state,@"state",bukezutime,@"bukezutime",jiedan,@"jiedan", nil];
+        //  @{@"type":self.cartype,@"state":@"1",@"bukezutime":@"2017-7-15",@"jiedan":@"1"};
+        
+        _dataArray = [NSMutableArray array];
+        dictnory = [NSDictionary dictionary];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:PATH_URL]]) {
             
-            NSLog(@"fanhuicanshu === %@",fanhuicanshu);
-            dictnory = fanhuicanshu;
-            
-            _dataArray = fanhuicanshu[@"carlist"];
-//            [_dataArray addObjectsFromArray:fanhuicanshu[@"carlist"]];
-            
-            if (_dataArray.count == 0) {
+            [HttpManager postData:dict andUrl:PATH_URL success:^(NSDictionary *fanhuicanshu) {
                 
-                [self createAlertView];
-            }else{
+                NSLog(@"fanhuicanshu === %@",fanhuicanshu);
+                dictnory = fanhuicanshu;
                 
-                if (_dataArray.count > 50) {
+                _dataArray = fanhuicanshu[@"carlist"];
+                //            [_dataArray addObjectsFromArray:fanhuicanshu[@"carlist"]];
+                
+                if (_dataArray.count == 0) {
                     
-                    xia.text = @"50+个车源";
+                    [self createAlertView];
                 }else{
                     
-                    xia.text = [NSString stringWithFormat:@"%ld个车源",(unsigned long)_dataArray.count];
+                    if (_dataArray.count > 50) {
+                        
+                        xia.text = @"50+个车源";
+                    }else{
+                        
+                        xia.text = [NSString stringWithFormat:@"%ld个车源",(unsigned long)_dataArray.count];
+                    }
+                    [self createTableView];
+                    [_tableView reloadData];
                 }
-                [self createTableView];
-                [_tableView reloadData];
-            }
-        } Error:^(NSString *cuowuxingxi) {
+            } Error:^(NSString *cuowuxingxi) {
+                
+            }];
             
-        }];
-        
-        
-        if ([self.cartype intValue] == 2) {
-            shang.text = @"商务专区";
-        }else if ([self.cartype intValue] == 3){
             shang.text = @"拍摄专区";
-        }else if ([self.cartype intValue] == 4){
-            shang.text = @"长包专区";
-        }else if ([self.cartype intValue] == 5){
-            shang.text = @"长租专区";
+            
+//            if ([self.cartype intValue] == 2) {
+//                shang.text = @"商务专区";
+//            }else if ([self.cartype intValue] == 3){
+//                shang.text = @"拍摄专区";
+//            }else if ([self.cartype intValue] == 4){
+//                shang.text = @"长包专区";
+//            }else if ([self.cartype intValue] == 5){
+//                shang.text = @"长租专区";
+//            }
         }
-    }
-    else{
-        
-        [self createAlertView];
+        else{
+            
+            [self createAlertView];
+        }
     }
 }
 

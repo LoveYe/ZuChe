@@ -6,6 +6,8 @@
 //  Copyright © 2016年 佐途. All rights reserved.
 //
 
+
+
 #import "RootViewcontroller.h"
 
 #import "MarriedCar.h"
@@ -105,6 +107,8 @@
     
     WSStarRatingView *_wsStraRating;
     NSMutableArray *downArray;
+    
+    BOOL _isPoping;
 }
 
 @property (nonatomic , strong) MyScrollView *bannerView;
@@ -113,17 +117,30 @@
 
 @property (nonatomic , strong)SecScrollView *view2;
 
+
 @end
 
 @implementation MarriedCar
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    
+    if (!_isPoping) {
+        
+        _isPoping = YES;
+        return YES;
+    }
+    return NO;
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    
-    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    self.navigationItem.leftBarButtonItem = nil;
     self.tabBarController.tabBar.hidden = YES;
+    
+    
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -134,9 +151,9 @@
         }else if (status == 0){
             
 //            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络不可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alert show];
-            alert.delegate = self;
+            UIAlertView *alert111 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络不可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert111 show];
+            alert111.delegate = self;
         }else if (status == 1){
             
             [self downLoad];
@@ -144,30 +161,19 @@
             
             [self downLoad];
         }
-//        switch (status) {
-//            case -1:
-//                
-//                
-//                break;
-//            case 0:
-//                NSLog(@"网络不可用");
-//                
-//                break;
-//            case 1:
-//                NSLog(@"手机网络");
-//                [self downLoad];
-//                break;
-//            case 2:
-//                NSLog(@"wifi网络");
-//                [self downLoad];
-//                break;
-//                
-//            default:
-//                break;
-//        }
     }];
-    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
 }
+- (void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+    
+    _isPoping = NO;
+}
+
 - (void)yindaoView{
     
     [[NSUserDefaults standardUserDefaults] setObject:@"you" forKey:@"yindaoye"];
@@ -184,6 +190,7 @@
     [view1 addSubview:view2];
     view2.transform = CGAffineTransformMakeScale(0.90, 0.90);
     [UIView animateWithDuration:0.25 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:1 options:UIViewAnimationOptionCurveLinear animations:^{
+        
         view2.transform = CGAffineTransformMakeScale(1.0, 1.0);
     } completion:^(BOOL finished) {
         
@@ -200,6 +207,7 @@
     
     view.transform = CGAffineTransformMakeScale(0.90, 0.90);
     [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:1 options:UIViewAnimationOptionCurveLinear animations:^{
+        
         view.transform = CGAffineTransformMakeScale(1.0, 1.0);
     } completion:^(BOOL finished) {
         
@@ -232,7 +240,6 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 - (void)downLoad{
@@ -296,6 +303,10 @@
     
     weiyidongArray = [NSMutableArray array];
     downArray = [NSMutableArray array];
+    
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    
+    
 }
 - (void)createMainCar{
     
@@ -427,16 +438,17 @@
 
 - (void)fanhuiClick{
     
-    HomePageViewController *view = [[HomePageViewController alloc] init];
+//    HomePageViewController *view = [[HomePageViewController alloc] init];
     
-    view.hidesBottomBarWhenPushed = YES;
-    CATransition *animation = [CATransition animation];
-    animation.duration = 0.25;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.type = @"Fade";
-    //animation.type = kCATransitionPush;
-    animation.subtype = kCATransitionFromLeft;
-    [self.view.window.layer addAnimation:animation forKey:nil];
+//    view.hidesBottomBarWhenPushed = YES;
+//    CATransition *animation = [CATransition animation];
+//    animation.duration = 0.25;
+//    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    animation.type = @"Fade";
+//    animation.subtype = kCATransitionFromLeft;
+//    [self.view.window.layer addAnimation:animation forKey:nil];
+    
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     
     [self.navigationController popViewControllerAnimated:NO];
 }
@@ -1587,7 +1599,7 @@
     headVCiew.backgroundColor = [UIColor whiteColor];
     
     UILabel *numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(width*0.05, 0, width*0.9, width*0.1)];
-    numberLabel.text = [NSString stringWithFormat:@"%ld条评价",_PingJiaArray.count];
+    numberLabel.text = [NSString stringWithFormat:@"%d条评价",(int)_PingJiaArray.count];
     numberLabel.font = [UIFont boldSystemFontOfSize:25];
     numberLabel.textColor = Color(107, 107, 107);
     [headVCiew addSubview:numberLabel];
